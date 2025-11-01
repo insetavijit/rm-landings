@@ -1,0 +1,26 @@
+{
+  // ===== Astro Language =====
+  "files.associations": {
+    "*.astro": "astro"
+  },
+  "astro.enabled": true,
+  // ===== CSS / SCSS IntelliSense =====
+  "html-css-class-completion.includeGlobPattern": "**/*.{css,scss,html,astro}",
+  "html-css-class-completion.HTMLLanguages": [
+    "html",
+    "astro"
+  ],
+  "html-css-class-completion.CSSLanguages": [
+    "css",
+    "scss"
+  ],
+  "html-css-class-completion.enableEmmetSupport": true,
+  // For HTML CSS Support (Bootstrap classes)
+  "css.remoteStyleSheets": [
+    "node_modules/bootstrap/dist/css/bootstrap.min.css"
+  ],
+  // ===== Emmet inside Astro =====
+  "emmet.includeLanguages": {
+    "astro": "html"
+  },
+}
