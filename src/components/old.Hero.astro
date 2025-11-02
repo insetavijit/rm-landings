@@ -1,0 +1,50 @@
+---
+import Navbar from "./Navbar.astro";
+---
+
+<header class="relative w-full h-screen overflow-hidden text-light bg-dark">
+    <!-- Background Layer -->
+    <aside class="absolute inset-0">
+        <img
+            src="/imgs/rm62.jpg"
+            alt="RM 62-01 Watch"
+            class="object-cover w-full h-full"
+        />
+        <div class="absolute inset-0 bg-dark/70"></div>
+    </aside>
+
+    <!-- Foreground Layer -->
+    <div class="relative z-10 flex flex-col h-full">
+        <!-- Navbar -->
+        <Navbar />
+
+        <!-- Hero Section -->
+        <section class="flex-1 flex items-center justify-start px-8 md:px-20">
+            <div class="max-w-xl space-y-6">
+                <header>
+                    <h1
+                        class="text-4xl md:text-6xl font-bold uppercase tracking-tight text-light"
+                    >
+                        RM 62-01 Tourbillon Vibrating Alarm
+                    </h1>
+                </header>
+                <main>
+                    <p class="text-lg md:text-xl text-light/80">
+                        A rare fusion of complication and elegance.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="#" class="btn btn-outline-light">Learn More</a>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <!-- Optional Bottom Aside -->
+        <aside class="px-8 md:px-20 pb-6">
+            <div class="bg-red-500/30 text-sm p-3 rounded-md">
+                lorem (optional bottom info section)
+            </div>
+        </aside>
+    </div>
+</header>

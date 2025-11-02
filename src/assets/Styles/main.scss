@@ -1,0 +1,26 @@
+// ===============================
+//  Luxury Watch Bootstrap Theme
+// ===============================
+
+@use "bootstrap/scss/functions";
+
+// Define variables first
+$deep-obsidian: #0b0b0f;
+$champagne-gold: #c9a961;
+$rose-quartz: #f5e8e4;
+$brushed-gold: #b8935c;
+$midnight-blue: #1a1a2e;
+$pearl-white: #fff9f5;
+
+// Pass your overrides directly into Bootstrap
+@use "bootstrap" with ($theme-colors: ("primary": $champagne-gold,
+        "secondary": $midnight-blue,
+        "light": $pearl-white,
+        "dark": $deep-obsidian,
+        "info": $rose-quartz,
+        "warning": $brushed-gold,
+    ),
+    $body-bg: $deep-obsidian,
+    $body-color: $rose-quartz,
+    $font-family-base: "Inter, sans-serif"
+);

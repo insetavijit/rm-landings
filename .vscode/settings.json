@@ -15,12 +15,17 @@
     "scss"
   ],
   "html-css-class-completion.enableEmmetSupport": true,
-  // For HTML CSS Support (Bootstrap classes)
+  // ✅ Load Bootstrap for class name IntelliSense
   "css.remoteStyleSheets": [
-    "node_modules/bootstrap/dist/css/bootstrap.min.css"
+    "./node_modules/bootstrap/dist/css/bootstrap.min.css"
   ],
   // ===== Emmet inside Astro =====
   "emmet.includeLanguages": {
     "astro": "html"
   },
+  // Optional: Improve Tailwind + Bootstrap coexistence
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.suggest.preview": true
 }
