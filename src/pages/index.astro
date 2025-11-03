@@ -7,11 +7,11 @@ import FeatureSection from "../components/FeatureSection.astro";
 import Layout from "../layouts/Layout.astro";
 import GallerySection from "../components/GallerySection.astro";
 import About from "../components/about.astro";
+import Mainfooter from "../components/mainfooter.astro";
 ---
 
 <Layout>
-	<!--
-	<header class="position-relative vh-100 overflow-hidden bg-dark text-white">
+	<!-- <header class="position-relative vh-100 overflow-hidden bg-dark text-white">
 		<Navbar />
 		<HeroSection />
 	</header>
@@ -22,8 +22,14 @@ import About from "../components/about.astro";
 	<section>
 		<GallerySection />
 	</section>
-	-->
-	<section>
+
+	<section class="container d-flex justify-content-center">
 		<About />
+	</section>
+	<section>
+		<FeatureSection />
+	</section> -->
+	<section>
+		<Mainfooter />
 	</section>
 </Layout>
