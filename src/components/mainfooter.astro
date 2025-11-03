@@ -1,1 +1,19 @@
-<h1>Oh ! this is the footer ...</h1>
+---
+import FooterMenuBlogs from "./footer-menuBlogs.astro";
+import FooterBrandSec from "./footer-brandSec.astro";
+import FooterMenulist from "./footer-menulist.astro";
+import TagsSection from "./tagsSection.astro";
+---
+
+<article class="row bg-secondary p-4 stunt text-uppercase">
+    <FooterMenulist />
+    <FooterMenuBlogs />
+    <TagsSection />
+    <FooterBrandSec />
+</article>
+
+<style>
+    .stunt {
+        font-family: "Michroma", sans-serif;
+    }
+</style>
