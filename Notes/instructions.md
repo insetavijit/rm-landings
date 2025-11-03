@@ -7,14 +7,6 @@ Content: Logo, product name, CTA (“Explore the Collection”)
 Usage: Elementor Hero section
 Notes: Autoplay video disabled on mobile; fallback image used.
 
-
-=====================
-Section: About
-Class: .about
-Animation: AOS fade-up (staggered)
-Layout: 2-column (image left, text right)
-Typography: Playfair Display + Lato (self-hosted)
-Notes: Line length ≤ 75 ch, maintain visual balance.
 =====================
 Section: Gallery
 Class: .gallery
@@ -33,6 +25,15 @@ Images: Optimized WebP, lazy-loaded
 Animation: Fade-in on viewport, smooth 400 ms slide
 
 Notes: Each slide uses .gallery-item; add hover zoom.
+
+=====================
+Section: About
+Class: .about
+Animation: AOS fade-up (staggered)
+Layout: 2-column (image left, text right)
+Typography: Playfair Display + Lato (self-hosted)
+Notes: Line length ≤ 75 ch, maintain visual balance.
+
 =====================
 Section: Specs
 Class: .specs

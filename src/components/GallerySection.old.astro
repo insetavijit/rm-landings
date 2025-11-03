@@ -1,0 +1,223 @@
+---
+// src/components/GallerySection.astro
+// Pinterest-style masonry gallery with bi-directional infinite scroll
+
+interface Slide {
+    src: string;
+    width: number;
+    height: number;
+}
+
+function getRandomImage(width: number, height: number): string {
+    const seed = Math.floor(Math.random() * 1000);
+    return `https://picsum.photos/seed/${seed}/${width}/${height}`;
+}
+
+function generateSlides(count: number): Slide[] {
+    return Array.from({ length: count }, () => {
+        const width = 280 + Math.floor(Math.random() * 180); // 280–460 px
+        const height = 320 + Math.floor(Math.random() * 280); // 320–600 px
+        return { src: getRandomImage(width, height), width, height };
+    });
+}
+
+const topRowSlides = generateSlides(12);
+const bottomRowSlides = generateSlides(12);
+---
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<section
+    class="pinterest-gallery w-full overflow-hidden py-12 bg-gradient-to-b from-gray-50 to-white"
+>
+    <div class="max-w-[1600px] mx-auto px-4">
+        <!-- Top Row - Scrolls Left to Right -->
+        <div class="swiper gallery-swiper mb-6" id="gallery-top">
+            <div class="swiper-wrapper">
+                {
+                    topRowSlides.map((slide) => (
+                        <div class="swiper-slide !w-auto">
+                            <div
+                                class="gallery-card group"
+                                style={`width: ${slide.width}px`}
+                            >
+                                <img
+                                    src={slide.src}
+                                    alt="Gallery image"
+                                    loading="lazy"
+                                    class="gallery-image"
+                                    style={`height: ${slide.height}px`}
+                                />
+                                <div class="gallery-overlay">
+                                    <div class="overlay-content">
+                                        <svg
+                                            class="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Bottom Row - Scrolls Right to Left -->
+        <div class="swiper gallery-swiper" id="gallery-bottom">
+            <div class="swiper-wrapper">
+                {
+                    bottomRowSlides.map((slide) => (
+                        <div class="swiper-slide !w-auto">
+                            <div
+                                class="gallery-card group"
+                                style={`width: ${slide.width}px`}
+                            >
+                                <img
+                                    src={slide.src}
+                                    alt="Gallery image"
+                                    loading="lazy"
+                                    class="gallery-image"
+                                    style={`height: ${slide.height}px`}
+                                />
+                                <div class="gallery-overlay">
+                                    <div class="overlay-content">
+                                        <svg
+                                            class="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .gallery-swiper {
+        overflow: visible;
+    }
+
+    .gallery-card {
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-8px);
+        z-index: 10;
+    }
+
+    .gallery-image {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition:
+            box-shadow 0.4s ease,
+            filter 0.3s ease;
+    }
+
+    .gallery-card:hover .gallery-image {
+        box-shadow:
+            0 20px 25px -5px rgba(0, 0, 0, 0.15),
+            0 10px 10px -5px rgba(0, 0, 0, 0.08);
+        filter: brightness(0.85);
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        border-radius: 16px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 1rem;
+    }
+
+    .gallery-card:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .overlay-content {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-radius: 50%;
+        padding: 0.75rem;
+        color: #111827;
+        transform: scale(0.8);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover .overlay-content {
+        transform: scale(1);
+    }
+
+    .swiper-wrapper {
+        transition-timing-function: linear !important;
+    }
+</style>
+
+<script>
+    import Swiper from "swiper";
+    import { Autoplay, FreeMode } from "swiper/modules";
+
+    // Initialize both galleries with opposite directions
+    const initGallery = (selector: string, reverse = false) => {
+        new Swiper(selector, {
+            modules: [Autoplay, FreeMode],
+            slidesPerView: "auto",
+            spaceBetween: 16,
+            freeMode: {
+                enabled: true,
+                momentum: false,
+            },
+            loop: true,
+            speed: 6000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+                reverseDirection: reverse,
+            },
+            allowTouchMove: true,
+            grabCursor: true,
+        });
+    };
+
+    // Top row: left to right
+    initGallery("#gallery-top", false);
+
+    // Bottom row: right to left
+    initGallery("#gallery-bottom", true);
+</script>

@@ -13,7 +13,7 @@ Currently on Stage 1 : Pure Bootstrap
 ==
 
 Need to understrand the JustifyCenter behaviour: bootstrap
-
+---
 header Plan:
     Section
         asid
@@ -23,3 +23,6 @@ header Plan:
                 asid
                     header
                     main:for p and btns
+:: T+1227 No need this nonSense - things were changed a lot on the Senario!
+---
+
